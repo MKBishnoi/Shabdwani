@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mainpage</title>
+     <style>
+        body{
+            background-color:#FFFDDE;
+            margin-top: 0px;
+        }
+        h1{
+            color: #125C13;
+            text-align: center;
+            font-size: 41px;
+            margin-top: 16px;
+        }
+        .dv{
+            text-align: center;
+        }
+        p{
+            text-align: center;
+            border-width: 4px;
+            border-style:groove;
+            border-radius: 13px;
+            font-size: 29px;
+            word-spacing: 7px;
+            margin-top: 10px;
+        }
+        .frm
+        {
+            text-align: center;
+            font-size: 29px;
+            word-spacing: 7px;
+        }
+        @media screen and (min-width: 600px) 
+        {
+        #dd {margin-left: 200px; margin-right: 200px;}
+       
+        }
+        .btn{
+            font-size: 16px;
+            padding: 15px 32px;
+            border-radius: 7px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            width: 60%;
+            cursor: pointer;
+            size: 58px;
+            border: 0px;
+            background-color:#FF5B00;
+            margin-top: 2px;
+          
+        }
+        .div1{
+            text-align: center;
+            margin-top: 5px;
+        }
+        .img1{
+            width: 200px;
+            
+        }
+        .btn:hover{
+           opacity: 1;
+        }
+    </style>
+</head>
+<body>
+     
+    <h1><%=head%> <%=heading%> </h1> 
+    <div class="div1">
+        <img class="img1" src="./img1.png" alt="">
+    </div>
+    
+    
+    <p> <%=filecontent %></p>
+    <div class="dv" id="dd">
+
+        <button type="button"   class="btn ">play and pause </button>
+        <button type="button"   class="btn "> restart</button>
+    </div>
+      
+    
+    <script>
+        document.querySelector("button").addEventListener("click",togglePlay);
+ 
+        document.querySelectorAll("button")[1].addEventListener("click",restart);
+        
+ 
+         var t=false;
+         var myAudio=new Audio("./audios/file<%=heading%>.wav");
+         function togglePlay() 
+         {
+            console.log("toggle");
+             t? myAudio.pause() : myAudio.play();
+                  
+           };
+           
+           myAudio.onplaying = function() {
+             t = true;
+           };
+           myAudio.onpause = function() {
+                   t= false;
+           };
+           function restart() 
+         {
+           
+           myAudio.pause();
+            myAudio.currentTime=0;
+           myAudio.play();
+         };
+         
+ 
+        </script>
+
+   
+ 
+     
+<form action="/shabd" method="post" class="frm">
+      <input placeholder="wordNumber" type="number" name="word_num" />
+      <button type="submit" name="button">submit</button>
+</body>
+</html>
